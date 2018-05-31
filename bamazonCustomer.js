@@ -164,11 +164,7 @@ function promptCustomerForQuantity(product) {
 
 // Purchase the desired quanity of the desired item
 function checkAndUpdateInventory(product, quantity, callback) {
-    //connection.query('SELECT * FROM Products WHERE item_id = ?', [product], function(err, res){
-        //var stockQuantity = res[0].stock_quantity;
-        //console.log(res);
-      // if (err) throw err;
-       // var currentItem = res;
+    
     connection.query(
       "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?",
       [quantity, product.item_id],
@@ -190,35 +186,7 @@ function checkAndUpdateInventory(product, quantity, callback) {
   }
   
 
-// function checkAndUpdateInventory (id, quantity) {
-//     connection.query('SELECT * FROM Products WHERE item_id = ?', [id], function(err, res){
-//         var stockQuantity = res[0].stock_quantity;
-//         if (err) throw err;
-//         var currentItem = res;
-//         if (quantity <= stockQuantity) {
 
-//             connection.query(
-    //'UPDATE PRODUCTS SET stock_quantity = stock_quantity - ? WHERE item_id = ?', 
-    //[ quantity, id], 
-    //function (err, res) {
-//                 var subtotal = currentItem[0].price * quantity;
-//                 total = total + subtotal;
-//                 if (err) throw err;
-
-//                 console.log("subtotal: " + currentItem[0].product_name + " " + currentItem[0].price +
-//                         " x " + quantity + " = $" + subtotal);
-//                 console.log("current total: $" + total);
-
-//                 callback();
-//             });
-
-//         } else {
-//             console.log("Sorry, we have only: " + stockQuantity + " in stock.");
-//             callback();
-//         }
-
-//     });
-// }
 
 // Check to see if the product the user chose exists in the inventory
 function checkInventory(choiceId, inventory) {
