@@ -152,7 +152,7 @@ function promptCustomerForQuantity(product) {
         if (quantity > product.stock_quantity) {
           console.log("\nInsufficient quantity!");
           console.log("Sorry, we have only: " + product.stock_quantity + " in stock.");
-          promptCustomerForQuantity();
+          promptCustomerForQuantity(product);
         }
         else {
           // Otherwise run makePurchase, give it the product information and desired quantity to purchase
@@ -166,8 +166,8 @@ function promptCustomerForQuantity(product) {
 function checkAndUpdateInventory(product, quantity, callback) {
     
     connection.query(
-      "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?",
-      [quantity, product.item_id],
+      "UPDATE products SET stock_quantity = ? WHERE item_id = ?",
+    [product.stock_quantity - quantity, product.item_id],
       function(err, res) {
         // Let the user know the purchase was successful, re-run loadProducts
         console.log("\nSuccessfully purchased " + quantity + " " + product.product_name + "'s!");
