@@ -26,20 +26,6 @@ var customerViewTable = new Table({
   , colWidths: [5, 45,15,12,10]
 });
 
-// connection.connect(function(err) {
-//   if (err) throw err;
-//   console.log("connected as id " + connection.threadId);
-//  // connection.end();
-//  afterConnection();
-// });
-// function afterConnection() {
-//   connection.query("SELECT * FROM products", function(err, res) {
-//     if (err) throw err;
-//    //console.log(res);
-//     //console.table(res);
-//     connection.end();
-//   });
-// }
 
 
 
@@ -94,22 +80,7 @@ function promptConsumer (inventory){
                 return !isNaN(value) || value.toLowerCase() === "q";
             }
         }
-        // {
-        //     type: 'input',
-        //     name: 'quantity',
-        //     message: 'Enter quantity: ',
-        //     validate: function (value) {
-        //         var value = parseInt(value);
-        //         return value >= 1
-        //     }
-        // }
-
-//     ])
-//     .then(function (answers) {
-//         checkIfShouldExit(answers.item_id);
-//         checkAndUpdateInventory(answers.item_id, answers.quantity,promptConsumer);
-//     });
-// }
+        
     ])
 .then(function(value) {
     // Check if the user wants to quit the program
@@ -172,14 +143,7 @@ function checkAndUpdateInventory(product, quantity, callback) {
         // Let the user know the purchase was successful, re-run loadProducts
         console.log("\nSuccessfully purchased " + quantity + " " + product.product_name + "'s!");
         console.log("Total Cost is: " + (quantity*product.price).toFixed(2) + " dollars");
-       //console.log(res);
-        // var subtotal = currentItem[0].parseInt(price) * quantity;
-        //         total = total + subtotal;
-        //         if (err) throw err;
-
-        //         console.log("subtotal: " + currentItem[0].product_name + " " + currentItem[0].price +
-        //                 " x " + quantity + " = $" + subtotal);
-        //         console.log("current total: $" + total);
+       
         loadProducts();
       //})
       });
